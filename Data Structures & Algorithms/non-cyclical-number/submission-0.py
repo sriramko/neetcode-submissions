@@ -1,0 +1,21 @@
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        visit = set()
+
+        def sumOfSquares(n: int) -> int:
+            output = 0
+
+            while n:
+                digit = n % 10
+                digit = digit ** 2
+                output += digit
+                n = n // 10
+            
+            return output
+
+
+        while n not in visit:
+            visit.add(n)
+            n = sumOfSquares(n)
+        
+        return n == 1
